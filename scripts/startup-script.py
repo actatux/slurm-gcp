@@ -1069,7 +1069,10 @@ def main():
 
         oslogin_chars = ['@', '.']
 
-        SLURM_USERS = DEF_SLURM_USERS
+        SLURM_USERS = DEF_SLURM_USERS.split(',')
+        for i in range(len(SLURM_USERS)):
+            SLURM_USERS[i] = SLURM_USERS[i][:32]
+        SLURM_USERS = ','.join(SLURM_USERS)
 
         for char in oslogin_chars:
             SLURM_USERS = SLURM_USERS.replace(char, '_')
